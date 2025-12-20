@@ -6,10 +6,11 @@
 
 ### 1. Documentation
 **README.md**: Must be professional and include:
--  All SQL queries with solutions
+- Explaination of the project
+**queries.sql**: Must include all the queries with solutions
 
 ### 2. What You Need to Provide
-- GitHub Repository Link
+- GitHub Repository Link (Which will include queries.sql and README.md)
 - ERD Link (You need to use Lucidchart or any other ERD tool to create the ERD and share the public link)
 - Viva Video Link (You can upload it on YouTube or Google Drive but make sure to share the public link)
 
