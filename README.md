@@ -1,146 +1,104 @@
-# Vehicle Rental System - Database Design & SQL Queries
-## Overview & Objectives
+# Vehicle Rental System – Database Design & SQL Queries
 
-This assignment is designed to evaluate your understanding of database table design, ERD relationships and SQL queries. You will work with a simplified Vehicle Rental System database.
+## 📌 Project Overview
 
-By completing this assignment, you will be able to:
-- Design an ERD with **1 to 1**, **1 to Many** and **Many to 1** relationships
-- Understand primary keys and foreign keys
-- Write SQL queries using JOIN, EXISTS and WHERE
+This project is a **Vehicle Rental System database** designed to demonstrate core database concepts such as:
 
-## Database Design & Business Logic
+- Entity Relationship Diagram (ERD)
+- Primary and Foreign Keys
+- One-to-Many and Many-to-One relationships
+- SQL queries using `JOIN`, `NOT EXISTS`, `WHERE`, `GROUP BY`, and `HAVING`
 
-The system manages:
+The system manages **members**, **vehicles**, and **bookings** in a realistic rental business scenario.
 
-- **Users**
-- **Vehicles**
-- **Bookings**
-
-### Business Logic - What Your Database Must Handle
-
-Your database design should support these real world scenarios:
-
-#### Users Table Must Store:
-- User role (Admin or Customer)
-- Name, email, password, phone number
-- Each email must be unique (no duplicate accounts)
-
-#### Vehicles Table Must Store:
-- Vehicle name, type (car/bike/truck), model
-- Registration number (must be unique)
-- Rental price per day
-- Availability status (available/rented/maintenance)
-
-#### Bookings Table Must Store:
-- Which user made the booking (link to Users table)
-- Which vehicle was booked (link to Vehicles table)
-- Start date and end date of rental
-- Booking status (pending/confirmed/completed/cancelled)
-- Total cost of the booking
 ---
 
-## Part 1: ERD Design (Mandatory)
-> Note: You must submit your ERD in the submission otherwise you will get 0 marks.
+## 🗄️ Database Schema Overview
 
-Design an Entity Relationship Diagram (ERD) for the Vehicle Rental System.
+### Tables Used
 
-### Required Tables
+1. **member**
 
-You must include the following tables:
+   - Stores user information
+   - Supports roles: `admin` and `customer`
+   - Each email is unique
 
-- Users
-- Vehicles
-- Bookings
+2. **vehicles**
 
-### Relationship Requirements
+   - Stores vehicle details
+   - Tracks vehicle type and availability status
 
-Your ERD must clearly show:
+3. **bookings**
+   - Stores rental bookings
+   - Links members and vehicles using foreign keys
+   - Tracks booking duration and status
 
-- **One to Many**: User → Bookings
-- **Many to One**: Bookings → Vehicle
-- **One to One (logical)**: Each booking connects exactly one user and one vehicle
+---
 
-### ERD Must Include
+## 🔗 ERD Relationships
+
+- **One-to-Many**:  
+  One member can have multiple bookings
+- **Many-to-One**:  
+  Multiple bookings can reference the same vehicle
+- **Logical One-to-One**:  
+  Each booking connects exactly one member and one vehicle
+
+The ERD clearly shows:
 
 - Primary Keys (PK)
 - Foreign Keys (FK)
 - Relationship cardinality
-- Status fields (e.g. booking status, vehicle availability)
-
-### Submission Format
-
-You need to submit your ERD as:
-- [Lucidchart ERD Tool](https://www.lucidchart.com/pages/examples/er-diagram-tool) 
-- Submit a public, shareable ERD link.
+- Status fields
 
 ---
 
-## Part 2: SQL Queries
+## 📂 SQL Queries Explanation
 
-Write SQL queries based on your designed schema.
+All queries are written in **simple PostgreSQL syntax** and are included in the `queries.sql` file.
 
-> **Check Sample Input/Output**: To understand the expected results for each query, please refer to the **[Sample Query Results (QUERY.md)](QUERY.md)** file.
+### Query 1: INNER JOIN
 
+**Purpose:**  
+Retrieve booking details along with customer name and vehicle name.
 
-### Query 1: JOIN
+**Concepts Used:**  
+`INNER JOIN`
 
-Retrieve booking information along with:
+---
 
-- Customer name
-- Vehicle name
+### Query 2: NOT EXISTS
 
-**Concepts used**: INNER JOIN
+**Purpose:**  
+Find vehicles that have **never been booked**.
 
-### Query 2: EXISTS
+**Concepts Used:**  
+`NOT EXISTS`
 
-Find all vehicles that have never been booked.
-
-**Concepts used**: NOT EXISTS
+---
 
 ### Query 3: WHERE
 
-Retrieve all available vehicles of a specific type (e.g. cars).
+**Purpose:**  
+Retrieve all **available vehicles of a specific type** (e.g., cars).
 
-**Concepts used**: SELECT, WHERE
-
-### Query 4: GROUP BY and HAVING
-
-Find the total number of bookings for each vehicle and display only those vehicles that have more than 2 bookings.
-
-**Concepts used**: GROUP BY, HAVING, COUNT
+**Concepts Used:**  
+`SELECT`, `WHERE`
 
 ---
 
-## Part 3: Theory Questions (Viva Practice - Progress, Not Perfection)
-> **Note:** Answer the questions in your own words and record them on camera in Bengali or English. Spend about two minutes on each question.
+### Query 4: GROUP BY & HAVING
 
-> "This video is a safe space to practice - confidence grows every time you speak."
+**Purpose:**  
+Find vehicles that have **more than 2 bookings**.
 
-
-#### Question 1
-What is a foreign key and why is it important in relational databases?
-
-#### Question 2
-What is the difference between WHERE and HAVING clauses in SQL?
-
-#### Question 3
-What is a primary key and what are its characteristics?
-
-#### Question 4
-What is the difference between INNER JOIN and LEFT JOIN in SQL?
+**Concepts Used:**  
+`GROUP BY`, `HAVING`, `COUNT`
 
 ---
 
-## Evaluation Criteria
+## 📁 Repository Structure
 
-| Section         | Marks |
-|-----------------|-------|
-| ERD Design      | 60%   |
-| SQL Queries     | 20%   |
-| Theory Answers  | 20%   |
-
----
-
-## 📚 Additional Resources
-- [Sample Query Results](QUERY.md) - Expected input and output examples for SQL queries
-- [Submission Guide](SUBMISSION.md) - Assignment submission guidelines and deadlines
+📦 vehicle-rental-system
+┣ 📄 README.md
+┣ 📄 queries.sql
